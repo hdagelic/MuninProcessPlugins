@@ -17,9 +17,13 @@ Things you can configure
 
 At the beginnig of each script you can configure:
 
-   LIMIT - the percentage when the process should be reported. The default is 0.0, but I set it to 0.5 to exclude processess that are always at 0.0. 
-   TMP - the tmp dir location. It should be writable by the user that the munin-node uses, or by everyone. The default is "/tmp". You can change it if you want 
-         the configuration to survive system restart. If it doesn't the graph will accumulate again but you could loose some color coding for previously active processes.
+   LIMIT - the percentage when the process should be reported. The default is 0.0, but I set it to 0.5 
+           to exclude processess that are always at 0.0. 
+
+   TMP - the tmp dir location. It should be writable by the user that the munin-node uses, or by 
+         everyone. The default is "/tmp". You can change it if you want the configuration to survive 
+         system restart. If it doesn't the graph will accumulate again but you could loose some 
+         color coding for previously active processes.
 
 
 
