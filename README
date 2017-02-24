@@ -1,0 +1,49 @@
+Plugin Description
+------------------
+
+Theese are simple plugins intended for Munin, to monitor three useful things: processor by process, memory by process and disk by process. They require no configuration and use the process list outputed by the "ps" command. Process forks are accumulated and their usages summed, as they were one process. The disk plugin requires the "iotop" command to work.  
+
+Plugins are tested only on Debian, but should work on other systems too.
+
+
+Graph labels
+------------
+
+Plugins use an auto-generated config - this is maybe not standard but it works: When first called they generate a file in the "/tmp" directory that will be used for outputing graph labels. Munin will pick up all the graphs for processess that subsequently appear.
+
+
+Things you can configure
+------------------------
+
+At the beginnig of each script you can configure:
+
+   LIMIT - the percentage when the process should be reported. The default is 0.0, but I set it to 0.5 to exclude processess that are always at 0.0. 
+   TMP - the tmp dir location. It should be writable by the user that the munin-node uses, or by everyone. The default is "/tmp". You can change it if you want 
+         the configuration to survive system restart. If it doesn't the graph will accumulate again but you could loose some color coding for previously active processes.
+
+
+
+Testing the plugins
+-------------------
+
+Run them:
+
+  ./procmem.sh
+  ./procpu.sh
+  ./procdisk.sh
+
+They should output values.  
+
+
+
+The disk plugin
+---------------
+
+The "procdisk" plugin uses the "iotop" program and it should be installed and working. Also, iotop should run as root so the plugin uses sudo to run it. There should be an entry in "/etc/sudoers" to allow the munin-node user (that is nobody on my system) to run iotop as root:
+
+nobody ALL = NOPASSWD: /usr/sbin/iotop
+
+
+I'm not sure about security of that so if you need security - look into it.
+
+This plugin runs for 2-3 seconds because it needs to accumulate disk usage. It's usage report is a little fuzzy (can output 110% sometimes) but it's report is usable.
