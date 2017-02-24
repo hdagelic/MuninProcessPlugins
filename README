@@ -5,6 +5,8 @@ Theese are simple plugins intended for Munin, to monitor three useful things: pr
 
 Plugins are tested only on Debian, but should work on other systems too.
 
+Procmem and procpu take current usage values, at the moment they are called, and procdisk accumulates usage for two seconds.
+
 
 Graph labels
 ------------
