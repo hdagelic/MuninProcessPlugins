@@ -1,7 +1,7 @@
 Plugin Description
 ------------------
 
-Theese are simple plugins intended for Munin, to monitor three useful things: processor by process, memory by process and disk by process. They require no configuration and use the process list outputed by the "ps" command. Process forks are accumulated and their usages summed, as they were one process. The disk plugin requires the "iotop" command to work.  
+Theese are simple plugins intended for Munin, to monitor three useful things: processor by process, memory by process and disk by process. They require no configuration and use the process list outputed by the "ps" command. Process forks are accumulated and their usages summed, as if they were one process. The disk plugin requires the "iotop" command to work.  
 
 Plugins are tested only on Debian, but should work on other systems too.
 
