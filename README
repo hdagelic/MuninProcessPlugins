@@ -50,4 +50,4 @@ nobody ALL = NOPASSWD: /usr/sbin/iotop
 
 I'm not sure about security of that so if you need security - look into it.
 
-This plugin runs for 2-3 seconds because it needs to accumulate disk usage. It's usage report is a little fuzzy (can output 110% sometimes) but it's report is usable.
+This plugin runs for 2-3 seconds because it needs to accumulate disk usage. It's usage report is a little fuzzy (can output 110% sometimes) but it's usable.
