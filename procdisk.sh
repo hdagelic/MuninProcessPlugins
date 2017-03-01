@@ -1,10 +1,7 @@
 #!/bin/bash
 
 
-# This plugin must have iotop installed, and this entry in the sudoers file
-# "nobody" is the user that munin-dode uses (on my system)
-
-# nobody ALL = NOPASSWD: /usr/sbin/iotop
+# This plugin must have iotop installed, and has to run as root.
 
 # What is the lowest percentege that should be repotred
 
@@ -24,7 +21,7 @@ if [ "$1" == "config" ]; then
   exit 0;
 fi
 
-OUT=$(sudo iotop -a -b -n 3 -P -qqq | awk '{print $12" "$10}' | sort | awk -v limit="$LIMIT" '{arr[$1]+=$2} END {for (i in arr) { if (arr[i]>=limit) print i,arr[i]/2.7 }}' | sort)
+OUT=$(iotop -a -b -n 3 -P -qqq | awk '{print $12" "$10}' | sort | awk -v limit="$LIMIT" '{arr[$1]+=$2} END {for (i in arr) { if (arr[i]>=limit) print i,arr[i]/2.7 }}' | sort)
 
 while read -r line; do
    COM=$(echo "$line" | awk '{print $1}' | sed -e 's/[^[:alnum:]]\+/_/g')

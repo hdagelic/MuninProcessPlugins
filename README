@@ -45,11 +45,10 @@ They should output values.
 The disk plugin
 ---------------
 
-The "procdisk" plugin uses the "iotop" program and it should be installed and working. Also, iotop should run as root so the plugin uses sudo to run it. There should be an entry in "/etc/sudoers" to allow the munin-node user (that is nobody on my system) to run iotop as root:
+The "procdisk" plugin uses the "iotop" program and it should be installed and working. Also, iotop should run as root. Add this to /etc/munin/plungin-conf.d/munin (or equivalent):
 
-nobody ALL = NOPASSWD: /usr/sbin/iotop
+[procdisk]
+user root
 
-
-I'm not sure about security of that so if you need security - look into it.
 
 This plugin runs for 2-3 seconds because it needs to accumulate disk usage. It's usage report is a little fuzzy (can output 110% sometimes) but it's usable.
