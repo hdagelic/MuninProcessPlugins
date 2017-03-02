@@ -37,6 +37,8 @@ done <<< "$OUT"
 
 # Sort and uniq contents of the file that is used for labels
 
+umask 000
+
 touch "$TMP_DIR/munin-procpu.tmp"
  
 if [ -f "$TMP_DIR/munin-procpu.lst" ]; then
@@ -46,4 +48,3 @@ fi
 sort "$TMP_DIR/munin-procpu.tmp" | uniq > "$TMP_DIR/munin-procpu.lst"
 rm -f "$TMP_DIR/munin-procpu.tmp"
 
-chmod ugo+rw "$TMP_DIR/munin-procpu.lst"

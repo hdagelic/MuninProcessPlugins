@@ -36,6 +36,8 @@ done <<< "$OUT"
 
 
 # Sort and uniq contents of the file that is used for labels
+
+umask 000
  
 touch "$TMP_DIR/munin-procmem.tmp"
 
@@ -46,4 +48,3 @@ fi
 sort "$TMP_DIR/munin-procmem.tmp" | uniq > "$TMP_DIR/munin-procmem.lst"
 rm -f "$TMP_DIR/munin-procmem.tmp"
 
-chmod ugo+rw "$TMP_DIR/munin-procmem.lst"
